@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillMap - AI Skill Demand Radar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow-a"></div>
+  <div class="bg-glow bg-glow-b"></div>
+
+  <main class="shell">
+    <header class="hero card reveal">
+      <p class="eyebrow">PoC Dashboard</p>
+      <h1>SkillMap - AI Skill Demand Radar</h1>
+      <p class="subtitle">Live job-market skill intelligence from your uploaded dataset.</p>
+      <span id="apiStatus" class="status-pill">Checking API...</span>
+    </header>
+
+    <section class="grid-2">
+      <article class="card reveal">
+        <h2>Upload Dataset</h2>
+        <label class="dropzone" id="dropzone">
+          <input id="fileInput" type="file" accept=".csv" />
+          <span>Drop CSV here or click to upload</span>
+        </label>
+        <button id="uploadBtn" class="btn btn-primary">Upload & Replace Dataset</button>
+        <div class="url-upload">
+          <input id="datasetUrlInput" type="url" placeholder="Paste direct .csv/.parquet URL (https://...)" />
+          <button id="uploadUrlBtn" class="btn">Load From URL</button>
+        </div>
+        <pre id="uploadResult" class="result"></pre>
+      </article>
+
+      <article class="card reveal">
+        <h2>Dataset Snapshot</h2>
+        <div id="snapshot" class="stats">
+          <div class="stat"><span>Total Jobs</span><strong id="totalJobs">-</strong></div>
+          <div class="stat"><span>Roles</span><strong id="rolesCount">-</strong></div>
+          <div class="stat"><span>Countries</span><strong id="countriesCount">-</strong></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="card reveal">
+      <h2>Skill Analytics</h2>
+      <div class="controls">
+        <label>
+          Role
+          <select id="roleSelect"></select>
+        </label>
+        <label>
+          Country
+          <select id="countrySelect"></select>
+        </label>
+        <label>
+          Skill
+          <select id="skillSelect"></select>
+        </label>
+        <label>
+          Top K
+          <input id="kInput" type="number" min="1" max="50" value="10" />
+        </label>
+      </div>
+      <div class="actions">
+        <button id="loadTopBtn" class="btn">Top Skills</button>
+        <button id="loadRisingBtn" class="btn">Rising Skills</button>
+        <button id="loadTrendBtn" class="btn">Skill Trend</button>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h3>Top Skills</h3>
+          <ul id="topList" class="list"></ul>
+        </div>
+        <div>
+          <h3>Rising Skills</h3>
+          <ul id="risingList" class="list"></ul>
+        </div>
+      </div>
+
+      <div class="trend-wrap">
+        <h3>Trend Timeline</h3>
+        <canvas id="trendCanvas" width="1200" height="360"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
