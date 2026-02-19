@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillMap Agent</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <main class="app-shell">
+    <header class="hero">
+      <h1>SkillMap Agentic Intelligence</h1>
+      <p>Upload your jobs dataset and ask goal-based questions. The agent handles intent parsing, planning, execution, and confidence scoring.</p>
+    </header>
+
+    <section class="card upload-card">
+      <h2>1) Upload Dataset</h2>
+      <div class="upload-row">
+        <input id="fileInput" type="file" accept=".csv,.xlsx,.xls" />
+        <button id="uploadBtn">Upload</button>
+      </div>
+      <pre id="summaryBox" class="panel"></pre>
+    </section>
+
+    <section class="card agent-card">
+      <h2>2) Ask the Agent</h2>
+      <div class="query-row">
+        <input id="queryInput" type="text" placeholder="Show rising skills for Data Analyst in Canada for last 6 months" />
+        <button id="runBtn">Run</button>
+      </div>
+      <pre id="agentBox" class="panel"></pre>
+    </section>
+
+    <section class="card runs-card">
+      <h2>3) Recent Agent Runs</h2>
+      <button id="refreshRunsBtn" class="ghost">Refresh Logs</button>
+      <pre id="runsBox" class="panel"></pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
