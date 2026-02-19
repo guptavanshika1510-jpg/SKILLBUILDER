@@ -1,8 +1,0 @@
-fastapi
-uvicorn[standard]
-python-multipart
-pandas
-sqlalchemy
-python-dateutil
-python-dotenv
-pyarrow
